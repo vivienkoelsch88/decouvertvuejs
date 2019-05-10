@@ -2,35 +2,31 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
     <!--<HelloWorld msg="Que voulez-vous faire ?"/>-->
-    <button v-on:click="onSuppliersListClick">Consulter la liste des fournisseurs</button>
-    <button v-on:click="onMapClick">Voir la carte</button>
-    <suppliersList/><SuppliersMap/>
+    <!--<button v-on:click="onSuppliersListClick">Consulter la liste des fournisseurs</button>-->
+    <!--<button v-on:click="onMapClick">Voir la carte</button>-->
+    <router-link to="SuppliersList" class="boutons">Consulter la liste des fournisseurs</router-link>
+    <router-link to="SuppliersMap" class="boutons">Voir la carte</router-link>
+    <router-view></router-view>
      </div>
 
 </template>
 
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-import SuppliersList from './components/SuppliersList.vue'
-import SuppliersMap from './components/SuppliersMap.vue'
-
 
 export default {
   name: 'app',
   components: {
-    SuppliersList,
-    SuppliersMap
   },
-    methods: {
-      onSuppliersListClick: function(){
-        alert("fournisseur click");
+  methods: {
+    onSuppliersListClick: function(){
+      alert("fournisseur click");
 
-      },
-      onMapClick: function(){
-        alert("Map click");
-      },
-    }
+    },
+    onMapClick: function(){
+      alert("Map click");
+    },
+  }
 
 
 }
@@ -43,7 +39,7 @@ img{
   margin-right: auto;
 }
 
-button{
+.boutons{
   display: inline-block;
   background-color: #4CAF50; /* Green */
   border: none;
