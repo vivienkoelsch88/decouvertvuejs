@@ -1,7 +1,9 @@
 <template>
 <div>
     <h1>Liste des fournisseurs</h1>
-    <supplier :name="name" :status="status" :checkedAt="checkedAt"></supplier>
+    <div class="fournisseur" v-for="supplier in suppliers">
+        <supplier :name="supplier.name" :status="supplier.status" :checkedAt="supplier.checkedAt"></supplier>
+    </div>
 </div>
 </template>
 
@@ -21,11 +23,30 @@
         },
         data: function(){
             return {
-                name: 'Mon fournisseur',
-                status: true, // est ce qu'il y a du stock
-                checkedAt: new Date(), // date de la dernière mise à jour du stock
-
+                suppliers: [
+                    {
+                        id: 1,
+                        name: "Fournisseur 1 ?",
+                        status: true,
+                        checkedAt: new Date()
+                    },
+                    {
+                        id: 2,
+                        name: "Fournisseur 2",
+                        status: false,
+                        checkedAt: new Date()
+                    }
+                ]
             }
         },
     }
 </script>
+<style>
+    .fournisseur{
+        border: solid;
+        margin-bottom: 20px;
+        margin-left: 5%;
+        margin-right: 5%;
+        padding-bottom: 2%;
+    }
+    </style>
