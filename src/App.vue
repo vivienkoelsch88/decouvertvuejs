@@ -14,9 +14,11 @@
 
 <script>
 
+import Supplier from "./components/Supplier";
 export default {
   name: 'app',
   components: {
+    Supplier
   },
   methods: {
     onSuppliersListClick: function(){
