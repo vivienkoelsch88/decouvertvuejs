@@ -1,14 +1,16 @@
 <template>
 <div>
     <h1>Liste des fournisseurs</h1>
-
-    <div class="fournisseur"  v-for="supplier in suppliers">
+    <!--<h3 v-if="loading">requête en cours</h3>-->
+    <!--<h3 v-if="!loading">requête finie</h3>-->
+    <div class="fournisseur" v-bind:key="supplier.id"  v-for="supplier in info">
 
         <supplier :name="supplier.name" :status="supplier.status" :checkedAt="supplier.checkedAt"></supplier>
         <timeago :datetime="supplier.checkedAt" :auto-update="60"></timeago>
 
     </div>
 
+    <!--<error v-if="pasbon" :error-recup="pasbon"></error>-->
 </div>
 </template>
 
@@ -16,11 +18,13 @@
     import VueTimeago from 'vue-timeago'
     // import VueRouter from 'vue-router'
     import Vue from 'vue'
+    // import axios from 'axios'
     import Supplier from "./Supplier";
+    // import Error from "./Error";
     // Vue.use(VueRouter);
 
     Vue.use(VueTimeago, {
-        name: 'Timeago', // Component name, `Timeago` by default
+        name: 'Timeago',
         locale: 'en', // Default locale
         // We use `date-fns` under the hood
         // So you can use all locales from it
@@ -29,30 +33,55 @@
         }
     });
 
+
+
     export default {
         name: 'SuppliersList',
-        components: {Supplier},
-        props: {
-            msg: String
+        components: {
+            // Error,
+            Supplier,
         },
+        props: {
+            msg: String,
+            info: Array,
+        },
+        methods: {
+            // async getApi() {
+            //     try {
+            //         await axios
+            //             .get('https://api-suppliers.herokuapp.com/api/suppliers')
+            //             .then(response => (this.info = response.data, this.loading = false));
+            //
+            //     } catch (error) {
+            //         this.pasbon = error
+            //         // this.promesse(error.request.status)
+            //         //     .then((result)=>console.log(result))
+            //         //     .catch((error)=>console.log(error))
+            //     }
+            // },
+        },
+        // created () {
+        //     this.loading = true;
+        //     this.getApi()
+        //
+        // },
+
+            // promesse(response){
+            //     return new Promise((resolve, reject) => {
+            //         if(response === 0){
+            //             resolve("c'est bon")
+            //         } else {
+            //             reject("c'est pas bon")
+            //         }
+            //     })
+            // }
+
         data: function(){
             return {
-                suppliers: [
-                    {
-                        id: 1,
-                        name: "Fournisseur 1",
-                        status: true,
-                        checkedAt: new Date(),
-                    },
-                    {
-                        id: 2,
-                        name: "Fournisseur 2",
-                        status: false,
-                        checkedAt: new Date(),
-                    },
-
-                ],
-
+                // info: null,
+                // loading: false,
+                // error: null,
+                // pasbon: null
             }
         },
     }

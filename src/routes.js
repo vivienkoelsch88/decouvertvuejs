@@ -6,8 +6,8 @@ import Supplier from './components/Supplier.vue'
 
 
 const routes = [
-    { path: '/SuppliersList', component: SuppliersList },
-    { path: '/SuppliersMap', component: SuppliersMap },
+    { path: '/SuppliersList', name: "SuppliersList", component: SuppliersList, props: true },
+    { path: '/SuppliersMap', name: "SuppliersMap", component: SuppliersMap, props: true },
     { path: '/Supplier', component: Supplier },
 ];
 
